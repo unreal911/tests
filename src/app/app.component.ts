@@ -11,12 +11,15 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
     console.log('index anterior',event.previousIndex)
     console.log('index nuevo',event.currentIndex)
   }
-
+  probando(){
+    console.log('Hola')
+  }
 
 }
 
