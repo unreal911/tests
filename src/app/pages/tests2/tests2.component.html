@@ -7,7 +7,11 @@
           <button class="btn btn-danger" type="button"  (click)="borrar(i)">x</button>
         </div>
 
-        <img src={{timePeriod}} class="img-fluid">
+        <img src={{timePeriod.url}} class="img-fluid">
+        <div class="mt-1 d-flex justify-content-center">
+           <button type="button" class="btn btn-success" *ngIf="!timePeriod.id" >Cargar</button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -21,4 +25,3 @@
       (change)="subir($event)" multiple>
   </div>
 </div>
-<h1>json</h1>

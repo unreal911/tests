@@ -10,6 +10,7 @@ import { ImgComponent } from './components/img/img.component';
 import { Tests1Component } from './pages/tests1/tests1.component';
 import { RouterModule } from '@angular/router';
 import { Tests2Component } from './pages/tests2/tests2.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { Tests2Component } from './pages/tests2/tests2.component';
     BrowserAnimationsModule,
     DragDropModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
 
   ],
   providers: [],
