@@ -1,50 +1,14 @@
-<div class="container mt-3">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+      role="tab" aria-controls="nav-home" aria-selected="true" [routerLink]="['/test1']" routerLinkActive="router-link-active" >Home</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+      role="tab" aria-controls="nav-profile" aria-selected="false" [routerLink]="['/test2']" routerLinkActive="router-link-active">Profile</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+      role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
 
-  <div class="row d-flex justify-content-center border border-3 p-3 border-info rounded">
-    <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 col-xxl-2 m-1">
-      <div class="card">
-        <img src="https://cdn.icon-icons.com/icons2/1875/PNG/512/imagegallery_120168.png" class="card-img" alt="...">
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-          style="cursor: pointer;" (click)="probando()">
-          X
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </div>
-    </div>
-    <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 col-xxl-2 m-1">
-      <div class="card">
-        <img src="https://cdn.icon-icons.com/icons2/1875/PNG/512/imagegallery_120168.png" class="card-img" alt="...">
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-          style="cursor: pointer;" (click)="probando()">
-          X
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </div>
-    </div>
   </div>
-  <div class="row">
-    <div class="col d-flex justify-content-center">
-      <div class="image-upload">
-        <label for="file-input">
-          <img src="https://cdn.icon-icons.com/icons2/1875/PNG/512/imagegallery_120168.png"
-            alt="Click aquí para subir tu foto" title="Click aquí para subir tu foto">
-        </label>
-        <input id="file-input" type="file" />
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col d-flex justify-content-center">
-      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of items;let i=index" cdkDrag [ngClass]="{'cambiar-color': i==0}">
-          {{item
-          }} + {{i}}
-          <div>
-            <button class="btn btn-success m-1">+</button>
-            <button class="btn btn-danger">x</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <router-outlet></router-outlet>
 </div>
