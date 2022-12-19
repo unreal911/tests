@@ -57,9 +57,10 @@ export class Tests2Component implements OnInit {
     }
 
   }
-  borrar(i: number) {
+  borrar(i: number,timePeriods:string) {
     if (this.timePeriods[i].id) {
       console.log('este es el id')
+      
     }
     else {
       let nuevoarray = this.timePeriods.splice(i, 1)

@@ -4,7 +4,7 @@
     <div class="example-box" *ngFor="let timePeriod of timePeriods;let i=index" cdkDrag>
       <div>
         <div class="position-absolute">
-          <button class="btn btn-danger" type="button"  (click)="borrar(i)">x</button>
+          <button class="btn btn-danger" type="button"  (click)="borrar(i,timePeriod)">x</button>
         </div>
 
         <img src={{timePeriod.url}} class="img-fluid">
