@@ -11,6 +11,11 @@ export class Tests2Component implements OnInit {
   @ViewChild('fileInput') fileInput: any;
   constructor(private productoService: ServicesService) { }
   ngOnInit(): void {
+    this.mostrarProductos()
+  }
+  timePeriods: any[] = [
+  ];
+  mostrarProductos() {
     this.productoService.mostrarProducto().subscribe(
       (resp: any) => {
         console.log(resp)
@@ -29,10 +34,9 @@ export class Tests2Component implements OnInit {
       }
     )
   }
-  timePeriods: any[] = [
-  ];
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
+     console.log(event.previousIndex,event.currentIndex)
   }
   subir(event: any) {
     // let arrayTemp: any[] = []
@@ -57,10 +61,18 @@ export class Tests2Component implements OnInit {
     }
 
   }
-  borrar(i: number,timePeriods:string) {
-    if (this.timePeriods[i].id) {
+  borrar(i: number, timePeriods: any) {
+    if (timePeriods.id) {
       console.log('este es el id')
-      
+      console.log(timePeriods)
+      this.productoService.eliminarImagen(timePeriods.id).subscribe(
+        (resp) => {
+          console.log(resp)
+        }, (err) => {
+          console.log(err)
+        }
+      )
+
     }
     else {
       let nuevoarray = this.timePeriods.splice(i, 1)
