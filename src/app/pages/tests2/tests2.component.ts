@@ -8,7 +8,9 @@ import { ServicesService } from 'src/app/services/services.service';
 })
 export class Tests2Component implements OnInit {
   files: any
+  cambia:boolean=false
   @ViewChild('fileInput') fileInput: any;
+  @ViewChild('cambia') cambiaInput: any;
   constructor(private productoService: ServicesService) { }
   ngOnInit(): void {
     this.mostrarProductos()
@@ -36,7 +38,25 @@ export class Tests2Component implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
-     console.log(event.previousIndex,event.currentIndex)
+    console.log(event.previousIndex, event.currentIndex)
+    this.productoService.cambiarPosicion(event.previousIndex, event.currentIndex).subscribe(
+     {
+      next:(e)=>{
+          console.log(e)
+          this.cambia=true
+          setTimeout(() => {
+            this.cambia = false;
+          }, 2000);
+
+      },
+      error:(r)=>{
+        console.log(r)
+      },
+      complete:()=>{
+
+      }
+     }
+    )
   }
   subir(event: any) {
     // let arrayTemp: any[] = []

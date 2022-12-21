@@ -4,12 +4,12 @@
     <div class="example-box" *ngFor="let timePeriod of timePeriods;let i=index" cdkDrag>
       <div>
         <div class="position-absolute">
-          <button class="btn btn-danger" type="button"  (click)="borrar(i,timePeriod)">x</button>
+          <button class="btn btn-danger" type="button" (click)="borrar(i,timePeriod)">x</button>
         </div>
 
         <img src={{timePeriod.url}} class="img-fluid">
         <div class="mt-1 d-flex justify-content-center">
-           <button type="button" class="btn btn-success" *ngIf="!timePeriod.id" >Cargar</button>
+          <button type="button" class="btn btn-success" *ngIf="!timePeriod.id">Cargar</button>
         </div>
 
       </div>
@@ -21,7 +21,16 @@
 <br>
 <div class="d-flex justify-content-center">
   <div class="file-select" id="src-file1">
-    <input type="file" name="src-file1" aria-label="Archivo" style="cursor: pointer;"
-      (change)="subir($event)" multiple #fileInput>
+    <input type="file" name="src-file1" aria-label="Archivo" style="cursor: pointer;" (change)="subir($event)" multiple
+      #fileInput>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <div class="container">
+      <div class="alert alert-primary animate__animated animate__backInUp" role="alert" *ngIf="cambia" id='cambia'>
+        A simple primary alert—check it out!
+      </div>
+    </div>
   </div>
 </div>
