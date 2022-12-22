@@ -1,17 +1,15 @@
 <div class="container mt-5 d-flex justify-content-center">
   <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" style="align-items: center;"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let timePeriod of timePeriods;let i=index" cdkDrag>
+    <div class="example-box" *ngFor="let item of timePeriods;let i=index" cdkDrag>
       <div>
         <div class="position-absolute">
-          <button class="btn btn-danger" type="button" (click)="borrar(i,timePeriod)">x</button>
+          <button class="btn btn-danger" type="button" (click)="borrar(i,item)">x</button>
         </div>
-
-        <img src={{timePeriod.url}} class="img-fluid">
+        <img [src]="item?.url"class="img-fluid">
         <div class="mt-1 d-flex justify-content-center">
-          <button type="button" class="btn btn-success" *ngIf="!timePeriod.id">Cargar</button>
+          <button type="button" class="btn btn-success" *ngIf="!item?.id">Cargar</button>
         </div>
-
       </div>
     </div>
   </div>

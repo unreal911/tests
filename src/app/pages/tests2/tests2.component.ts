@@ -8,7 +8,7 @@ import { ServicesService } from 'src/app/services/services.service';
 })
 export class Tests2Component implements OnInit {
   files: any
-  cambia:boolean=false
+  cambia: boolean = false
   @ViewChild('fileInput') fileInput: any;
   @ViewChild('cambia') cambiaInput: any;
   constructor(private productoService: ServicesService) { }
@@ -21,15 +21,8 @@ export class Tests2Component implements OnInit {
     this.productoService.mostrarProducto().subscribe(
       (resp: any) => {
         console.log(resp)
-        let imgarray = resp.producto.img
-        console.log(imgarray)
-        for (let i = 0; i < imgarray.length; i++) {
-          const element = {
-            id: imgarray[i].id,
-            url: imgarray[i].url
-          }
-          this.timePeriods.push(element)
-        }
+        this.timePeriods = resp.producto.img
+        console.log(this.timePeriods)
       },
       (err) => {
         console.log(err)
@@ -40,22 +33,18 @@ export class Tests2Component implements OnInit {
     moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
     console.log(event.previousIndex, event.currentIndex)
     this.productoService.cambiarPosicion(event.previousIndex, event.currentIndex).subscribe(
-     {
-      next:(e)=>{
+      {
+        next: (e) => {
           console.log(e)
-          this.cambia=true
-          setTimeout(() => {
-            this.cambia = false;
-          }, 2000);
+          this.cambia = true
+        },
+        error: (r) => {
+          console.log(r)
+        },
+        complete: () => {
 
-      },
-      error:(r)=>{
-        console.log(r)
-      },
-      complete:()=>{
-
+        }
       }
-     }
     )
   }
   subir(event: any) {
@@ -88,6 +77,7 @@ export class Tests2Component implements OnInit {
       this.productoService.eliminarImagen(timePeriods.id).subscribe(
         (resp) => {
           console.log(resp)
+          this.mostrarProductos()
         }, (err) => {
           console.log(err)
         }
